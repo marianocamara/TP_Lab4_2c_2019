@@ -9,10 +9,15 @@
                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
             </div>
             <span>o utiliza tu email</span>
-            <input type="text" placeholder="Nombre" />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Contraseña" />
-            <button>Registarse</button>
+            <input type="text" placeholder="Nombre"[(ngModel)]="newName" name="nwNme" >
+            <input type="email" placeholder="Email" [(ngModel)]="newEmail" name="nwEml">
+            <input type="password" placeholder="Contraseña" [(ngModel)]="newPass" name="nwPsw">
+            <button *ngIf="!isLoading" (click)="Register()">Registarse</button>
+            <div *ngIf="isLoading" class="d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
         </form>
     </div>
     <div class="form-container sign-in-container">
@@ -24,10 +29,20 @@
                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
             </div>
             <span>o utiliza tu email</span>
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Contraseña" />
+            <input type="email" placeholder="Email" [(ngModel)]="email" name="eml">
+            <input type="password" placeholder="Contraseña" [(ngModel)]="pass" name="psw">
+            <div class="row mt-5">
+                <div class="col-md-9 mx-auto">
+                    <div #recaptcha ></div>
+                </div>
+            </div>
             <a href="#">¿Olvidaste tu contraseña?</a>
-            <button>Ingresar</button>
+            <button *ngIf="!isLoading" (click)="Enter()">Ingresar</button>
+            <div *ngIf="isLoading" class="d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
         </form>
     </div>
     <div class="overlay-container">
