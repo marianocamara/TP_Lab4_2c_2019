@@ -25,6 +25,7 @@ export class RegistroComponent implements OnInit {
   porcentajeUpload: Observable<number>;
   urlImagen: Observable<string>;
   noCargando = true;
+  cliente; recepcionista; administrdor; especialista;
 
   constructor(private usuarioService: UsuarioService, private storage: AngularFireStorage, private elRef: ElementRef) {
     this.imgName = "Seleccionar imágen..";

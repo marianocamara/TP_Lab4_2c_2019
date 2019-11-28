@@ -10,7 +10,7 @@ import { TurnoListaComponent } from '../turno-lista/turno-lista.component';
 })
 export class ModalObservacionesComponent {
 
-  private observacionCtrol = new FormControl('', Validators.required);
+  observacionCtrol = new FormControl('', Validators.required);
 
   constructor(public dialogRef: MatDialogRef<TurnoListaComponent>) { }
 

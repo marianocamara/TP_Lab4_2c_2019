@@ -13,10 +13,10 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class ModalEncuestaComponent {
 
-  private encuesta: EncuestaInterface;
-  private puntuacionCtrol = new FormControl('', Validators.required);
-  private puntuacionClinicaCtrol = new FormControl('', Validators.required);
-  private opinionCtrol = new FormControl('', [Validators.required, Validators.maxLength(66)]);
+  encuesta: EncuestaInterface;
+  puntuacionCtrol = new FormControl('', Validators.required);
+  puntuacionClinicaCtrol = new FormControl('', Validators.required);
+  opinionCtrol = new FormControl('', [Validators.required, Validators.maxLength(66)]);
 
   constructor(public dialogRef: MatDialogRef<TurnoListaComponent>
     , @Inject(MAT_DIALOG_DATA) public _Encuesta: EncuestaInterface) {

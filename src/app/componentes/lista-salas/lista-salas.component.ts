@@ -10,9 +10,9 @@ import { ConsultorioInterface, EstadoConsultorio } from 'src/app/clases/Sala';
 })
 export class ListaSalasComponent implements OnInit {
 
-  private displayedColumns: string[] = ['Codigo', 'Estado', 'Ocupar'];
-  private consultorios: ConsultorioInterface[];
-  private dataSource;
+  displayedColumns: string[] = ['Codigo', 'Estado', 'Ocupar'];
+  consultorios: ConsultorioInterface[];
+  dataSource;
 
   constructor(private dataApi: DataApiService) { }
 
