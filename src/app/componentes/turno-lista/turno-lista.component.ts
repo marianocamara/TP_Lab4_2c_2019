@@ -22,7 +22,7 @@ export class TurnoListaComponent implements OnInit {
   
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  columsCliente: string[] = ['NombreEspecialista', 'Especialidad', 'Fecha', 'Estado', 'Encuesta', 'Consultorio'];
+  columsCliente: string[] = ['NombreEspecialista', 'Especialidad', 'Fecha', 'Estado', 'Encuesta', 'Consultorio', 'Observaciones'];
   columsRecepcionista: string[] = ['NombreEspecialista', 'Especialidad', 'NombreCliente', 'Fecha', 'Estado', 'Consultorio', 'CancelarTurno'];
   columsEspecialista: string[] = ['NombreCliente', 'Fecha', 'Estado', 'Consultorio', 'FinalizarTurno'];
 
