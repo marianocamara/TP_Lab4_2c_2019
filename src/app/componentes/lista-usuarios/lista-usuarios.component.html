@@ -129,9 +129,9 @@
               <h5>{{item.Nombre}}</h5>
               <p class="py-1 my-1">{{item.Email}}</p>
               <p class="py-1 my-1">{{item.Perfil}} <span *ngIf="item.Especialidad">({{item.Especialidad}})</span></p>
-              <button class="boton-ad" *ngIf="!item.Activo"
+              <button [appActivacion]="item.Activo" class="boton-ad" *ngIf="!item.Activo"
               (click)="activarDesactivar(item.Uid)">Activar</button>
-              <button class="boton-ad" *ngIf="item.Activo"
+              <button [appActivacion]="item.Activo" class="boton-ad" *ngIf="item.Activo"
               (click)="activarDesactivar(item.Uid)">Desactivar</button>
             </div>
           </div>

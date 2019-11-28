@@ -39,6 +39,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AgmCoreModule} from '@agm/core';
 import { BotonSeleccionadoDirective } from './directivas/boton-seleccionado.directiva';
 import { TituloComponent } from './componentes/titulo/titulo.component';
+import { ActivacionDirective } from './directivas/activacion.directive';
 
 
 
@@ -76,7 +77,8 @@ import { TituloComponent } from './componentes/titulo/titulo.component';
     TurnosEstadisticaComponent,
     BotonSeleccionadoDirective,
     EspecialidadEstadisticaComponent,
-    TituloComponent
+    TituloComponent,
+    ActivacionDirective
   ],
   imports: [
     BrowserModule,
