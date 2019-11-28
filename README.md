@@ -1,12 +1,12 @@
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/DVVRhpY/logo.png" alt="logo" border="0"></a>
 
-# Heart Care Center
 #### Consultorio Odontologico
 
 Segundo trabajo practico de Laboratorio IV
 
 ## Bienvenido 🚀
 
-Haz click en el siguiente enlace para ingresar a la web de [Heart Care Center](https://marianocamara.github.io/TP_Lab4_2c_2019/ "Heart Care Center")
+Haz click en sobre el nombre para ingresar a la web de <a href="https://marianocamara.github.io/TP_Lab4_2c_2019/" target="_blank" >Heart Care Center</a>
 
 Al ingresar al home de la aplicacion, veras informacion general sobre el consultorio, los horarios y servicios que ofrecen, como tambien sus especialistas. Podras optar por inicar sesion si ya eres un usuario registrado, o por registrarte seleccionando el perfil que desees. El sistema cuenta con botones de acceso rapido y un captcha de verificacion.
 
