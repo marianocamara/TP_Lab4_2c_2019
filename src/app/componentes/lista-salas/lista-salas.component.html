@@ -1,0 +1,40 @@
+<section class="h-100 mb-5">
+  <div class="container h-100">
+      <app-titulo titulo="Sala de espera" descripcion="Administra los diferentes consultorios, ocupandolos cuando sea necesario" class="mt-n5"></app-titulo>
+    <div class="row justify-content-md-center h-100 mt-n5">
+<div class="col">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar">
+      </mat-form-field>
+
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="Codigo">
+          <th mat-header-cell *matHeaderCellDef> Código de la Sala </th>
+          <td mat-cell *matCellDef="let element"> {{element.Codigo}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Estado">
+          <th mat-header-cell *matHeaderCellDef> Estado </th>
+          <td mat-cell *matCellDef="let element"> {{element.Estado}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Ocupar">
+          <th mat-header-cell *matHeaderCellDef> Ocupar Consultorio </th>
+          <td mat-cell *matCellDef="let element">
+            <div *ngIf="element.Estado != 'Ocupado'; else disableBtn">
+              <button mat-flat-button color="primary" (click)=" ocupar(element.id)">Ocupar</button>
+            </div>
+            <ng-template #disableBtn>
+              <button mat-flat-button color="primary" disabled>Ocupar</button>
+            </ng-template>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+    </div>
+  </div>
+</section>

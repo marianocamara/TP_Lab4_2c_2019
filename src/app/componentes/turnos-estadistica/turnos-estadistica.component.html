@@ -1,0 +1,105 @@
+<div class="container my-5">
+    <div class="row">
+      <div class="col">
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Cantidad de turnos entre fechas
+      </mat-panel-title>
+      <mat-panel-description>
+        {{resultTurnosCount}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <form (ngSubmit)="buscarTurnos()" #f="ngForm" novalidate>
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker1" placeholder="Seleccione una fecha desde"
+          [formControl]="fechaDesdeForm" disabled required>
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1 disabled="false"></mat-datepicker>
+        <mat-error *ngIf="fechaDesdeForm.hasError('required')">Por favor, seleccione una fecha</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="ml-3">
+        <input matInput [matDatepicker]="picker2" placeholder="Seleccione una fecha hasta"
+          [formControl]="fechaHastaForm" disabled required>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2 disabled="false"></mat-datepicker>
+        <mat-error *ngIf="fechaHastaForm.hasError('required')">Por favor, seleccione una fecha</mat-error>
+      </mat-form-field>
+
+      <div class="mt-2">
+        <button mat type="submit" mat-raised-button color="primary"
+          [disabled]="fechaDesdeForm.hasError('required') || fechaHastaForm.hasError('required')">Buscar</button>
+      </div>
+
+    </form>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Turnos realizados por especialidad
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <strong></strong>
+    <mat-list role="list">
+      <mat-list-item role="listitem"><strong>Odontologia:&nbsp;</strong> {{countOdontologia}}</mat-list-item>
+      <mat-list-item role="listitem"><strong>Endodoncia:&nbsp;</strong> {{countEndodoncia}}</mat-list-item>
+      <mat-list-item role="listitem"><strong>Ortodoncia:&nbsp;</strong> {{countOrtodoncia}}</mat-list-item>
+      <mat-list-item role="listitem"><strong>Radiologia:&nbsp;</strong> {{countRadiologia}}</mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Turnos cancelados por especialidad
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-list role="list">
+        <mat-list-item role="listitem"><strong>Odontologia:&nbsp;</strong> {{countOdontologiaCancel}}</mat-list-item>
+        <mat-list-item role="listitem"><strong>Endodoncia:&nbsp;</strong> {{countEndodonciaCancel}}</mat-list-item>
+        <mat-list-item role="listitem"><strong>Ortodoncia:&nbsp;</strong> {{countOrtodonciaCancel}}</mat-list-item>
+        <mat-list-item role="listitem"><strong>Radiologia:&nbsp;</strong> {{countRadiologiaCancel}}</mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Turnos realizados por clientes
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-list role="list">
+      <mat-list-item *ngFor="let tc of turnosClientes">
+        <strong>{{tc.Nombre}}:&nbsp;</strong>{{tc.CountTurnos}}
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Turnos realizados por recepcionistas
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+  
+      <mat-list role="list">
+        <mat-list-item *ngFor="let tr of turnosRecepcionistas">
+          <strong>{{tr.Nombre}}:&nbsp;</strong>{{tr.CountTurnos}}
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+
+</mat-accordion>
+
+
+</div>
+</div>
+</div>

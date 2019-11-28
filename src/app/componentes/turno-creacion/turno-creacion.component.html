@@ -1,0 +1,94 @@
+<div class="card-wrapper">
+  <div class="card fat">
+    <div class="card-body">
+      <h4 class="card-title">Sacar Turno</h4>
+      <form (ngSubmit)="CrearTurno()" #f="ngForm" novalidate>
+
+        <mat-form-field>
+          <input matInput [min]="minDate" [matDatepicker]="picker" placeholder="Seleccione una fecha"
+          [formControl]="fechaForm" disabled (ngModelChange)="TraerEspecialistasPorFecha()" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker disabled="false"></mat-datepicker>
+          <mat-error *ngIf="fechaForm.hasError('required')">Por favor, seleccione una fecha</mat-error>
+        </mat-form-field>
+
+
+        <div *ngIf="perfil == 'Recepcionista'">
+          <mat-form-field>
+            <mat-label>Clientes</mat-label>
+            <mat-select [formControl]="clienteForm" required>
+              <mat-option *ngIf="clientes.length == 0">--</mat-option>
+              <mat-option *ngFor="let cliente of clientes" [value]="cliente">
+                {{cliente.Nombre}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="clienteForm.hasError('required') && clientes.length > 0">Por favor,
+              seleccione al cliente</mat-error>
+            <mat-hint *ngIf="clientes.length == 0">
+              No se encontraron clientes
+            </mat-hint>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field class="mt-1">
+          <mat-label>Especialistas</mat-label>
+          <mat-select [formControl]="especialistaForm" required>
+            <mat-option *ngIf="especialistas.length == 0">--</mat-option>
+            <mat-option *ngFor="let especialista of especialistas" [value]="especialista">
+              {{especialista.Nombre}} - {{especialista.Especialidad}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="especialistaForm.hasError('required') && especialistas.length > 0">Por favor,
+            seleccione al especialista</mat-error>
+          <mat-hint *ngIf="especialistas.length == 0 && !fechaForm.hasError('required')">
+            No se encontraron especialistas disponibles en la fecha indicada
+          </mat-hint>
+          <mat-hint *ngIf="fechaForm.hasError('required')">
+            Seleccione una fecha para ver los especialistas disponibles
+          </mat-hint>
+        </mat-form-field>
+
+        <!-- <div *ngIf="perfil == 'Recepcionista'">
+            <mat-form-field class="mt-1">
+              <mat-label>Clientes</mat-label>
+              <mat-select formControlName="clienteForm" required>
+                <mat-option *ngIf="clientes.length == 0">--</mat-option>
+                <mat-option *ngFor="let cliente of clientes" [value]="cliente">
+                  {{cliente.Nombre}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="(clienteForm.errors?.required || clienteForm.touched) && clientes.length > 0">Por favor,
+                seleccione al cliente</mat-error>
+              <mat-hint *ngIf="clientes.length == 0">
+                No se encontraron clientes
+              </mat-hint>
+            </mat-form-field>
+          </div> -->
+
+        <!-- <mat-form-field class="mt-1">
+          <mat-label>Especialista</mat-label>
+          <mat-select formControlName="especialistaForm" required>
+            <mat-option *ngIf="especialistas.length == 0">--</mat-option>
+            <mat-option *ngFor="let especialista of especialistas" [value]="especialista">
+              {{especialista.Nombre}}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="(especialistaForm.errors?.required || especialistaForm.touched) && especialistas.length > 0">Por
+            favor, seleccione al especialista
+          </mat-error>
+          <mat-hint *ngIf="especialistas.length == 0 && fechaForm.valid">
+            No se encontraron especialistas disponibles en la fecha indicada
+          </mat-hint>
+          <mat-hint *ngIf="fechaForm.invalid">
+            Seleccione una fecha para ver los especialistas disponibles
+          </mat-hint>
+        </mat-form-field> -->
+
+        <div class="mt-5">
+          <button type="submit" mat-raised-button color="primary" [disabled]="especialistaForm.hasError('required') || clienteForm.hasError('required') || fechaForm.hasError('required')">Crear</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

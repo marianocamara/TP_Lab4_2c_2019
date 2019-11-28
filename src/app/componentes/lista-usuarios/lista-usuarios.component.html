@@ -1,0 +1,151 @@
+<section class="alta">
+  
+  <app-titulo titulo="Registrar nuevo usuario" descripcion="Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit Error Sit Expedita"></app-titulo>
+  
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <mat-horizontal-stepper class="w-100 rounded" [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="nombre">
+          <form [formGroup]="nombre">
+            <ng-template matStepLabel>Nombre</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Nombre" formControlName="nombre" required>
+            </mat-form-field>
+            <div class="text-center">
+              <button mat-button matStepperNext>Proximo</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="email">
+          <form [formGroup]="email">
+            <ng-template matStepLabel>Email</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Email" formControlName="email" required>
+            </mat-form-field>
+            <div class="text-center">
+              <button mat-button matStepperPrevious>Anterior</button>
+              <button mat-button matStepperNext>Proximo</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="contrasena">
+          <form [formGroup]="contrasena">
+            <ng-template matStepLabel>Contraseña</ng-template>
+            <mat-form-field>
+              <input matInput type="password" placeholder="Contrasena" formControlName="contrasena" required>
+            </mat-form-field>
+            <div class="text-center">
+              <button mat-button matStepperPrevious>Anterior</button>
+              <button mat-button matStepperNext>Proximo</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="perfil">
+          <form [formGroup]="perfil">
+            <ng-template matStepLabel>Perfil</ng-template>
+            <mat-form-field>              
+              <mat-label>Selecciona una opcion</mat-label>
+              <mat-select formControlName="perfil">                          
+                <mat-option value="Cliente">Cliente</mat-option>
+                <mat-option value="Recepcionista">Recepcionista</mat-option>
+                <mat-option value="Especialista">Especialista</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="text-center">
+              <button mat-button matStepperPrevious>Anterior</button>
+              <button mat-button matStepperNext>Proximo</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step *ngIf="perfil.value.perfil=='Especialista'" [stepControl]="especialidad">
+          <form [formGroup]="especialidad">
+            <ng-template matStepLabel>Especialidad</ng-template>
+            <mat-form-field>
+              <mat-label>Selecciona una opcion</mat-label>
+              <mat-select formControlName="especialidad">                          
+                <mat-option value="Odontologia">Odontologia</mat-option>
+                <mat-option value="Endodoncia">Endodoncia</mat-option>
+                <mat-option value="Ortodoncia">Ortodoncia</mat-option>
+                <mat-option value="Radiologia">Radiologia</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="text-center">
+              <button mat-button matStepperPrevious>Anterior</button>
+              <button mat-button matStepperNext>Proximo</button>
+            </div>
+          </form>
+        </mat-step>
+        
+        <mat-step>
+          <ng-template matStepLabel>Imagen</ng-template>
+          <!-- carga de imágen -->
+          
+          <form class="form-group">
+            <label for="customFile">Imágen</label>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="customFile" accept=".png, .jpg"
+              (change)="ImagenCargada($event)">
+              <label class="custom-file-label" for="customFile">{{imgName}}</label>
+            </div>
+            <div class="text-center">
+                <button mat-button matStepperPrevious>Anterior</button>
+                <button mat-button matStepperNext>Proximo</button>
+              </div>
+          </form>
+          
+          <input #imgUsuario type="hidden" [value]="urlImagen | async">
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Listo!</ng-template>
+          <div class="text-center">
+            <ng-container
+            *ngIf="(urlImagen | async) || noCargando && captchaVerificado; else registroDeshabilitado">
+            <button mat-stroked-button class="mr-3" color="primary" (click)="altaUsuario(); stepper.reset()">Registrar usuario</button>
+          </ng-container>
+          
+          <ng-template #registroDeshabilitado>
+            <button mat-stroked-button class="mr-3" color="primary" (click)="altaUsuario()">Registrar usuario</button>
+          </ng-template>
+          <button mat-stroked-button color="warn" (click)="stepper.reset()">Cancelar</button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
+</div>
+</section>
+
+<app-titulo titulo="Usuarios registrados" descripcion="Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit Error Sit Expedita"></app-titulo>
+
+<section id="meat" class="pt-5">
+  <div class="container">
+    <div class="row">
+        <div *ngFor="let item of usuarios" class="col-4 mb-5 mt-3">
+        <div class="profile-card js-profile-card">
+            <div class="profile-card__img">
+              <img src="{{item.ImagenUrl}}" alt="profile card">
+            </div>
+            
+            <div class="profile-card__cnt js-profile-cnt pb-3">
+              <h5>{{item.Nombre}}</h5>
+              <p class="py-1 my-1">{{item.Email}}</p>
+              <p class="py-1 my-1">{{item.Perfil}} <span *ngIf="item.Especialidad">({{item.Especialidad}})</span></p>
+              <button class="boton-ad" *ngIf="!item.Activo"
+              (click)="activarDesactivar(item.Uid)">Activar</button>
+              <button class="boton-ad" *ngIf="item.Activo"
+              (click)="activarDesactivar(item.Uid)">Desactivar</button>
+            </div>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</section>
+
+ 
+  
+
+
+  
+  
+  
+  

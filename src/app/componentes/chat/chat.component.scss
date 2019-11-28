@@ -1,0 +1,73 @@
+@import "src/scss/variables";
+
+.user-img {
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 40px rgba(0,0,0,.05);
+}
+
+.ulChatUser {
+	list-style: none; 
+	text-align: left;
+	padding-inline-start: 0px;
+}
+
+.divChatUser {
+	border-radius: 20px;
+	background-color: $light-seconday;
+}
+
+.divChatUserMe {
+	border-radius: 20px;
+	background-color: $light-primary;
+}
+
+.mat-raised-button {
+	margin-left: 20px;
+}
+
+.chat {
+	font-size: 14px;
+	margin-top: 40px;
+	margin-bottom: 80px;
+	text-align: center;
+}
+
+.chat .card-wrapper {
+	width: 400px;
+}
+
+.chat .card {
+	border-color: transparent;
+	box-shadow: 0 0 40px rgba(0,0,0,.05);
+}
+
+.chat .card.fat {
+	padding: 10px;
+}
+
+.chat .card .card-title {
+	margin-bottom: 30px;
+}
+
+.chat .form-control {
+	border-width: 2.3px;
+}
+
+.chat .form-group label {
+	width: 100%;
+}
+
+.chat .btn.btn-block {
+	padding: 12px 10px;
+}
+
+.chat .margin-top20 {
+	margin-top: 20px;
+}
+
+.chat .no-margin {
+	margin: 0;
+}

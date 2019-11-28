@@ -1,0 +1,105 @@
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <div class="login100-more" style="background-image: url('./assets/img/dental2.jpg');"></div>
+      
+      <form class="login100-form validate-form" (ngSubmit)="f.form.valid && acepTYC.valid && Registrarse()" #f="ngForm" novalidate>
+        
+        
+        
+        <div class="w-100 wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+          <input type="text" class="input100" name="name" id="name" [(ngModel)]="nombreModel" #name="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required autofocus placeholder="Nombre">
+          <span class="focus-input100"></span>
+        </div>
+        <div class="w-100 wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type password">
+          <input type="email" class="input100" name="email" id="email" [(ngModel)]="emailModel"
+          #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required placeholder="Email"> 
+          <span class="focus-input100"></span>
+        </div>
+        
+        <div class="w-100 wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+          <input type="password" class="input100" name="password" id="password" [(ngModel)]="passwordModel"
+          #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required placeholder="Contraseña">
+          <span class="focus-input100"></span>
+        </div>
+        <div class="w-100 mb-3">
+          <label class="label-f" for="perfil">Perfil</label>
+          <select class="form-control" name="perfil" id="perfil" (change)="changePerfil($event.target.value)">
+            <option [ngValue]="Cliente">Cliente</option>
+            <option [ngValue]="Recepcionista">Recepcionista</option>
+            <option [ngValue]="Especialista">Especialista</option>
+            <option [ngValue]="Administrador">Administrador</option>
+          </select>
+        </div>
+        
+        <div class="w-100 mb-3" *ngIf="perfil == 'Especialista'">
+          <label class="label-f" for="especialidad">Especialidad</label>
+          <select class="form-control" name="especialidad" id="especialidad">
+            <option [ngValue]="Odontologia">Odontología</option>
+            <option [ngValue]="Endodoncia">Endodoncia</option>
+            <option [ngValue]="Ortodoncia">Ortodoncia</option>
+            <option [ngValue]="Radiologia">Radiologia</option>
+          </select>
+        </div>
+        
+        <!-- carga de imágen -->
+        
+        <form class="form-group w-100 text-center">
+          <label for="customFile">Imágen</label>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="customFile" accept=".png, .jpg"
+            (change)="ImagenCargada($event)">
+            <label class="custom-file-label pl-1 pt-1 text-left" for="customFile">{{imgName}}</label>
+          </div>
+        </form>
+        
+        <input #imgUsuario type="hidden" [value]="urlImagen | async">
+        
+        <form class="margin-bottom m-5">
+          <re-captcha (resolved)="resolved($event)" siteKey="6LeUMq8UAAAAAKO61peKaT7RknpnQe7G5M56hz04">
+          </re-captcha>
+        </form>
+        
+        <div class="w-full text-center datos">
+          <form >
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="customCheck" name="customCheck"
+              [(ngModel)]="accepted" #acepTYC="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && acepTYC.invalid }" required>
+              <label class="custom-control-label" for="customCheck">Acepto los términos y
+                condiciones</label>
+              </div>
+            </form>
+          </div>
+          
+          <div class="w-full text-center  pb-5 p-t-10">
+            <span class="txt1">
+              ¿Olvidaste tu
+            </span>
+            
+            <a class="txt2">
+              usuario/contraseña?
+            </a>
+            
+          </div>
+          <ng-container
+          *ngIf="(urlImagen | async) || noCargando && captchaVerificado; else registroDeshabilitado">
+          <button type="submit" class="login100-form-btn">
+            Registrarse
+          </button>
+        </ng-container>
+        
+        <ng-template #registroDeshabilitado>
+          <button type="submit" disabled=true class="login100-form-btn">
+            Registrarse
+          </button>
+        </ng-template>
+        
+      </form>
+      
+      
+    </div>
+  </div>
+</div>
+

@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import { UsuarioService } from './servicios/Usuario.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'login';
+  constructor(private us:UsuarioService){
+    this.us.EstadoLogeo();
+  }
 }

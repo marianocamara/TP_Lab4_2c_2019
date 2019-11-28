@@ -1,0 +1,21 @@
+<section class="h-100 my-5">
+  <div class="container h-100">
+      <div class="row justify-content-md-center h-100 mt-3">
+      <div *ngIf="perfil == 'Especialista'; else showAbm" class="col-md-12">
+        <app-turno-lista></app-turno-lista>
+      </div>
+      <ng-template #showAbm>
+        <div class="row w-100">
+        <div class="col-md-4 pl-0">
+          <app-turno-creacion></app-turno-creacion>
+        </div>
+        <div class="col-md-8" style="background: url('./assets/img/doctor.jpg'); background-size: cover;">
+        </div>
+      </div>
+        <div class="col-md-12 p-0 mt-5">
+            <app-turno-lista></app-turno-lista>
+          </div>
+      </ng-template>
+    </div>
+  </div>
+</section>

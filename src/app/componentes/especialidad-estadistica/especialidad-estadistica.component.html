@@ -1,0 +1,53 @@
+
+<div class="container my-5">
+    <div class="row">
+      <div class="col">
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Especialidad más y menos usada
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <strong>Más usada:&nbsp;</strong>{{masUsada}}<br>
+    <strong>Menos usada:&nbsp;</strong>{{menosUsada}}
+  </mat-expansion-panel>
+
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Mejor Comentario
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+ 
+    <mat-list role="list">
+        <mat-list-item role="listitem">Cliente: {{mejorComentario.NombreCliente}}</mat-list-item>
+        <mat-list-item role="listitem">Comentario: {{mejorComentario.Comentario}} </mat-list-item>
+        <mat-list-item role="listitem">Especialista: {{mejorComentario.Especialista}} </mat-list-item>
+        <mat-list-item role="listitem">Puntuacion del especialista: <strong> {{mejorComentario.PuntuacionEspecialista}} </strong></mat-list-item>
+        <mat-list-item role="listitem">Puntuacion de la clinica: <strong> {{mejorComentario.PuntuacionClinica}} </strong></mat-list-item>
+      </mat-list>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Peor Comentario
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list role="list">
+          <mat-list-item role="listitem">Cliente: {{peorComentario.NombreCliente}}</mat-list-item>
+          <mat-list-item role="listitem">Comentario: {{peorComentario.Comentario}} </mat-list-item>
+          <mat-list-item role="listitem">Especialista: {{peorComentario.Especialista}} </mat-list-item>
+          <mat-list-item role="listitem">Puntuacion del especialista: <strong> {{peorComentario.PuntuacionEspecialista}} </strong></mat-list-item>
+          <mat-list-item role="listitem">Puntuacion de la clinica: <strong> {{peorComentario.PuntuacionClinica}} </strong></mat-list-item>
+        </mat-list>
+    </mat-expansion-panel>
+
+</mat-accordion>
+
+
+</div>
+</div>
+</div>

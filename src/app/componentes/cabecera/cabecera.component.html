@@ -1,0 +1,97 @@
+<!-- start header -->
+<header id="header">
+    <div class="container">
+        <div class="head">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="left">
+                        <a href="" class="navbar-brand"><img src="./assets/img/logo.png" alt="logo"></a>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="right hidden-md-down">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="left"><img src="./assets/img/Clock.png" alt="Clock"></div>
+                                <div class="right ">
+                                    <p>Lunes - Domingos: <br> 24 horas! </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="left"><img src="./assets/img/Info-copy.png" alt="addres"></div>
+                                <div class="right">
+                                    <p>El salvador 1422 <br> CABA, Argentina</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="left"><img src="./assets/img/phone.png" alt="phone"></div>
+                                <div class="right">
+                                    <p>(11) 4567891 info@email.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- end header -->
+<!-- Start navbar -->
+<div id="navbar">
+    <div class="container">
+        <nav class="navbar navbar-toggleable-sm navbar-light bg-faded">
+            
+            <div class="menu-2 w-100">
+                
+                    <div class="row">
+                <div class="col d-flex mx-auto">
+                        <div  *ngIf="estaLogeado && perfil == 'Administrador'">
+                            <a class="nav-link" routerLink="/administracion">Administración de usuarios</a>
+                        </div>
+                        <div class="nav-item dropdown" *ngIf="estaLogeado && perfil == 'Administrador'">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Estadisticas
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" routerLink="/estadisticas/empleados">Empleados</a>
+                                <a class="dropdown-item" routerLink="/estadisticas/turnos">Turnos</a>
+                                <a class="dropdown-item" routerLink="/estadisticas/especialidades">Especialidades</a>
+                            </div>
+                        </div>
+                        <div *ngIf="estaLogeado && perfil == 'Recepcionista'">
+                            <a class="nav-link" routerLink="/saladeespera">Sala de Espera</a>
+                        </div>
+                        <div *ngIf="estaLogeado && perfil != 'Administrador'">
+                            <a class="nav-link" routerLink="/turnos">Turnos</a>
+                        </div>
+                        <div class="d-flex justify-content-center w-100" *ngIf="!estaLogeado">
+                        <div  class="ml-5">
+                            <a class="nav-link" routerLink="/registrarse">Registrarse<span class="ml-3"><strong> | </strong></span> </a>
+                        </div>
+                        
+                        <div>
+                            <a class="nav-link" routerLink="/logearse"> Ingresar</a>
+                        </div> 
+                    </div>
+                    </div>
+                <div class="col d-flex" *ngIf="estaLogeado">
+                    <div class="nav-item dropdown ml-auto" >
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="{{imagenUrl}}" class="img-responsive user-img">
+                            <span class="">{{nombre}}</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" (click)="Deslogearse()">Cerrar sesion</a>
+                        </div>
+                    </div>                   
+                </div>
+                
+            </div>
+            </div>
+    </nav>
+</div>
+</div>
+<!-- end navbar -->
+
+
