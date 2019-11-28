@@ -17,9 +17,9 @@ export class ListaUsuariosComponent implements OnInit {
 
   @ViewChild("imgUsuario", { static: false }) InputImagenUser: ElementRef;
   
-  private displayedColumns: string[] = ['Imágen', 'Nombre', 'Email', 'Perfil', 'Activo'];
-  private usuarios: UsuarioInterface[];
-  private dataSource;
+  displayedColumns: string[] = ['Imágen', 'Nombre', 'Email', 'Perfil', 'Activo'];
+  usuarios: UsuarioInterface[];
+  dataSource;
   usuario: UsuarioInterface;
   isLinear = false;
   nombre: FormGroup;

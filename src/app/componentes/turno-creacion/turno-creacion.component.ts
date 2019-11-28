@@ -19,8 +19,8 @@ export class TurnoCreacionComponent implements OnInit {
   especialistas: UsuarioInterface[];
   clientes: UsuarioInterface[];
   mostrar = true;
-  private perfil;
-  private user;
+  perfil;
+  user;
 
   fechaForm = new FormControl('', [Validators.required]);
   especialistaForm = new FormControl('', Validators.required);

@@ -14,7 +14,7 @@ export class RegistroComponent implements OnInit {
 
   @ViewChild("imgUsuario", { static: false }) InputImagenUser: ElementRef;
 
-  private perfil;
+  perfil;
   imgName: string;
   nombreModel: string;
   emailModel: string;
@@ -25,7 +25,7 @@ export class RegistroComponent implements OnInit {
   porcentajeUpload: Observable<number>;
   urlImagen: Observable<string>;
   noCargando = true;
-  cliente; recepcionista; administrdor; especialista;
+  Cliente; Recepcionista; Administrdor; Especialista;
 
   constructor(private usuarioService: UsuarioService, private storage: AngularFireStorage, private elRef: ElementRef) {
     this.imgName = "Seleccionar imágen..";

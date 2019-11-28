@@ -22,14 +22,14 @@ export class TurnoListaComponent implements OnInit {
   
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  private columsCliente: string[] = ['NombreEspecialista', 'Especialidad', 'Fecha', 'Estado', 'Encuesta', 'Consultorio'];
-  private columsRecepcionista: string[] = ['NombreEspecialista', 'Especialidad', 'NombreCliente', 'Fecha', 'Estado', 'Consultorio', 'CancelarTurno'];
-  private columsEspecialista: string[] = ['NombreCliente', 'Fecha', 'Estado', 'Consultorio', 'FinalizarTurno'];
+  columsCliente: string[] = ['NombreEspecialista', 'Especialidad', 'Fecha', 'Estado', 'Encuesta', 'Consultorio'];
+  columsRecepcionista: string[] = ['NombreEspecialista', 'Especialidad', 'NombreCliente', 'Fecha', 'Estado', 'Consultorio', 'CancelarTurno'];
+  columsEspecialista: string[] = ['NombreCliente', 'Fecha', 'Estado', 'Consultorio', 'FinalizarTurno'];
 
-  private perfil;
-  private turnos: TurnoInterface[];
-  private dataSource = new MatTableDataSource(this.turnos);
-  private noData = this.dataSource.connect().pipe(map((data: any[]) => data.length === 0));
+  perfil;
+  turnos: TurnoInterface[];
+  dataSource = new MatTableDataSource(this.turnos);
+  noData = this.dataSource.connect().pipe(map((data: any[]) => data.length === 0));
 
   constructor(private dataApi: DataApiService, private usuarioService: UsuarioService, private dialog: MatDialog, private ns: NotificationsService) {
     this.perfil = this.usuarioService.usuario.Perfil;

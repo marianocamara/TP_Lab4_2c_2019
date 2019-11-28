@@ -99,7 +99,7 @@
           <ng-template matStepLabel>Listo!</ng-template>
           <div class="text-center">
             <ng-container
-            *ngIf="(urlImagen | async) || noCargando && captchaVerificado; else registroDeshabilitado">
+            *ngIf="(urlImagen | async) || noCargando; else registroDeshabilitado">
             <button mat-stroked-button class="mr-3" color="primary" (click)="altaUsuario(); stepper.reset()">Registrar usuario</button>
           </ng-container>
           
