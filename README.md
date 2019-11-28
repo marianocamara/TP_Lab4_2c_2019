@@ -6,7 +6,7 @@ Segundo trabajo practico de Laboratorio IV
 
 ## Bienvenido 🚀
 
-Haz click en el siguiente enlace para ingresar a la web de [Heart Care Center](# "Heart Care Center")
+Haz click en el siguiente enlace para ingresar a la web de [Heart Care Center](https://marianocamara.github.io/TP_Lab4_2c_2019/ "Heart Care Center")
 
 Al ingresar al home de la aplicacion, veras informacion general sobre el consultorio, los horarios y servicios que ofrecen, como tambien sus especialistas. Podras optar por inicar sesion si ya eres un usuario registrado, o por registrarte seleccionando el perfil que desees. El sistema cuenta con botones de acceso rapido y un captcha de verificacion.
 
