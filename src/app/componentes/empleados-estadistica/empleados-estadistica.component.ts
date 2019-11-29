@@ -14,31 +14,18 @@ import { Observable } from 'rxjs';
 })
 export class EmpleadosEstadisticaComponent implements OnInit {
 
-  constructor(private dataApi: DataApiService, private db: AngularFirestore) { }
+  constructor(private dataApi: DataApiService) { }
 
   displayedColumns: string[] = ['Empleado', 'Dia', 'Horario'];
+  columnsToDisplay: string[] = this.displayedColumns.slice();
   @ViewChild('TABLE', { static: false }) table: ElementRef;
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
-  dataSource;
-  ListadoDeUsuarios:Observable<any[]>;
-  lista: Array<any> = [];
-  
-  coleccionTipadaFirebase:AngularFirestoreCollection<any>;
+  data;
 
   ngOnInit() {
-
-      this.coleccionTipadaFirebase= this.db.collection<any>('logs'); 
-    //para el filtrado mirar la documentación https://firebase.google.com/docs/firestore/query-data/queries?authuser=0
-    this.ListadoDeUsuarios=this.coleccionTipadaFirebase.valueChanges();
-    this.ListadoDeUsuarios.subscribe(x => {
-      this.dataSource = new MatTableDataSource(x);
-      this.dataSource.sort = this.sort; 
-      
-const sortState: Sort = {active: 'Dia', direction: 'desc'};
-this.sort.active = sortState.active;
-this.sort.direction = sortState.direction;
-this.sort.sortChange.emit(sortState)
-    })     
+    this.dataApi.TraerTodos('logs')
+      .subscribe(logs => {
+        this.data = new MatTableDataSource(logs);
+      });
   }
 
   exportExcel() {
@@ -66,6 +53,5 @@ this.sort.sortChange.emit(sortState)
 
     doc.save('LogsEmpleados.pdf');
   }
-
-
 }
+
